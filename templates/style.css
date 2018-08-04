@@ -1,0 +1,55 @@
+
+h2 {
+    text-align: center;
+}
+
+.login-container {
+    margin: 0 auto;
+    margin-top: 10%;
+    max-width: 40%;
+
+}
+
+.btn {
+    min-width: 100%;
+}
+
+.img-thumbnail	 {
+    display: block;
+    margin: 0 auto;
+    width: 220px;
+    border: 0px;
+}
+
+p {
+    /* text-align: center; */
+}
+
+.no-radius {
+    border-radius: 0px;
+}
+
+.course-form {
+    margin-top: 50px;
+}
+
+.deregister {
+    margin-top: 20px;
+}
+
+.event-select {
+    margin-top: 10%;
+}
+
+.card-group {
+    margin: 40px 0;
+}
+
+
+.speaker-container {
+    margin-top: 100px;
+}
+
+.profile-pic {
+    border-radius: 200px;
+}
