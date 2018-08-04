@@ -10,7 +10,7 @@ def page_not_found(e=None):
 
 @app.route('/')
 def index():
-	return render_template('home.html')
+	return render_template('login.html')
 
 @app.route('/login')
 def login():
