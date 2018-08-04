@@ -1,0 +1,55 @@
+ {% extends "base.html" %} {% block body %}
+
+<div class="request-body">
+
+    <div class="input-group input-group-lg mb-3">
+        <input id="tags" type="text" placeholder="Search Course" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+        <div class="input-group-append">
+            <button id="hostSubmit" class="btn btn-success btn-logo" type="button">Search</button>
+        </div>
+    </div>
+    <div class="result">
+
+        <h1>COMP1511 - Introduction to Programming</h1>
+        <h3>Available Slots</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">User</th>
+                    <th scope="col">Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jeff</td>
+                    <td>Monday 9:00AM</td>
+                </tr>
+                <tr>
+                    <td>Bill</td>
+                    <td>Tuesday 7:00PM</td>
+                </tr>
+                <tr>
+                    <td>Judy</td>
+                    <td>Thursday 1:00PM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(function () {
+        var availableTags = [
+            "COMP1511 - Introduction to Programming",
+            "COMP1521 - Computer System Fundamentals",
+            "COMP1531 - Introduction to Software Engineering",
+            "COMP2111 - System Modelling & Design",
+            "COMP2511 - Object Oriented Programming",
+            "COMP3331 - Computer Networks & Applications ",
+            "COMP3421 - Computer Graphics",
+            "COMP9319 - Web Data Compression & Search"
+        ];
+        $("#tags").autocomplete({
+            source: availableTags
+        });
+    });
+</script> {% endblock %}
