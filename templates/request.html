@@ -1,13 +1,39 @@
  {% extends "base.html" %} {% block body %}
 
 <div class="request-body">
-    <h3>Request a Swap</h3>
 
     <div class="input-group input-group-lg mb-3">
         <input id="tags" type="text" placeholder="Search Course" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
         <div class="input-group-append">
             <button id="hostSubmit" class="btn btn-success btn-logo" type="button">Search</button>
         </div>
+    </div>
+    <div class="result">
+
+        <h1>COMP1511 - Introduction to Programming</h1>
+        <h3>Available Slots</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">User</th>
+                    <th scope="col">Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jeff</td>
+                    <td>Monday 9:00AM</td>
+                </tr>
+                <tr>
+                    <td>Bill</td>
+                    <td>Tuesday 7:00PM</td>
+                </tr>
+                <tr>
+                    <td>Judy</td>
+                    <td>Thursday 1:00PM</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 <script>
