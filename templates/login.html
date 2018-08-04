@@ -1,19 +1,15 @@
 {% extends "base.html" %}{% block body %}
-    <div class = "container">
-    <form method="POST">
-        <div class="form-group">
-            <label for="zid">Username (zID or email)</label>
-            <input name="username" type="username" class="form-control no-radius" id="zid" aria-describedby="zidHelp" placeholder="Username">
-            <small id="emailHelp" class="form-text text-muted">Please enter your UNSW zID, username or email address.</small>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input name="password" type="password" class="form-control no-radius" id="exampleInputPassword1" placeholder="Password">
-            <small id="emailHelp" class="form-text text-muted">Please enter your UNSW zPass or password(for guests).</small>
-        </div>
+{% import "bootstrap/wtf.html" as wtf %}
 
-        <button type="submit" class="btn btn-warning no-radius">Login</button>
-    </form>
-        <a href="#">Register</a>
+    <div class = "container">
+        <form class="form-signin" method="POST" action="/login">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            {{ form.hidden_tag() }}
+            {{ wtf.form_field(form.username) }}
+            {{ wtf.form_field(form.password) }}
+            {{ wtf.form_field(form.remember) }}
+            <button type="submit" class="btn btn-warning no-radius">Login</button>
+        </form>
+        <a href="/signup">Register</a>
     </div>
 {% endblock %}
