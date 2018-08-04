@@ -1,75 +1,12 @@
 {% extends "base.html" %} {% block body %}
 
-<div class="row">
-    <div class="col-md">
-        <h3>My Courses</h3>
+<div class="login-container">
+    <img src="{{url_for('static', filename='logo.png') }}" />
+    <a href="{{url_for('request')}}" class="btn btn-primary btn-lg btn-block btn-logo">Post</a>
+    <a href="{{url_for('request')}}" class="btn btn-primary btn-lg btn-block btn-logo">Request</a>
 
-        <div class="input-group input-group-lg">
-            <input id="hostTags" class="tags" type="text" placeholder="Search Course" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
-            <div class="input-group-append">
-                <button id="hostSubmit" class="btn btn-success btn-logo" type="button">Add Course</button>
-            </div>
-        </div>
+    <a href="{{url_for('inbox')}}" class="btn btn-primary btn-lg btn-block btn-logo">Inbox</a>
 
-        <ul id="hostCourses">
 
-        </ul>
-    </div>
-    <div class="col-md">
-        <h3>Jeff's Courses</h3>
-        <div class="input-group input-group-lg">
-            <input id="friendTags" class="tags" type="text" placeholder="Search Course" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
-            <div class="input-group-append">
-                <button id="#friendSubmit" class="btn btn-success btn-logo" type="button">Add Course</button>
-            </div>
-        </div>
-    </div>
 </div>
-
-
-<a href="#" class="btn btn-success btn-logo">Generate</a>
-
-<script>
-    $("#hostSubmit").click(function() {
-
-        var input = $("#hostTags");
-        var val = input.val();
-        
-        if (val == "")
-            return;
-
-        input.val("");
-        $("#hostCourses").append("<li>" + val + "</li>");
-    });
-
-
-    $(function () {
-        var availableTags = [
-            "ActionScript",
-            "AppleScript",
-            "Asp",
-            "BASIC",
-            "C",
-            "C++",
-            "Clojure",
-            "COBOL",
-            "ColdFusion",
-            "Erlang",
-            "Fortran",
-            "Groovy",
-            "Haskell",
-            "Java",
-            "JavaScript",
-            "Lisp",
-            "Perl",
-            "PHP",
-            "Python",
-            "Ruby",
-            "Scala",
-            "Scheme"
-        ];
-        $(".tags").autocomplete({
-            source: availableTags
-        });
-    });
-</script> {% endblock %}
+{% endblock %}
