@@ -4,9 +4,9 @@ from datetime import datetime
 
 class Course:
 	def __init__(self, course_code, lecture, tutorials):
-	self._course_code = course_code
-	self._lecture = lecture
-	self._tutorials = tutorials
+		self._course_code = course_code
+		self._lecture = lecture
+		self._tutorials = tutorials
 
 	@property
 	def course_code(self):
@@ -37,9 +37,9 @@ class Class:
 
 class Lecture(Class):
 	def __init__(self, start_time, hours, day):
-		super().__init__(self, start_time, hours, day)
+		super().__init__(start_time, hours, day)
 	
 
 class Tutorial(Class):
 	def __init__(self, start_time, hours, day):
-		super().__init__(self, start_time, hourse, day)
+		super().__init__(start_time, hours, day)
