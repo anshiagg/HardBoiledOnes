@@ -1,13 +1,15 @@
  {% extends "login-base.html" %} {% block content %}
 
 <div class="request-body">
+    <form method="POST">
+        <div class="input-group input-group-lg mb-3">
+                <input id="tags" type="text" placeholder="Search Course" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                <div class="input-group-append">
+                <button id="hostSubmit" name="searching" class="btn btn-success btn-logo" type="button">Search</button>
+                </div>
 
-    <div class="input-group input-group-lg mb-3">
-        <input id="tags" type="text" placeholder="Search Course" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
-        <div class="input-group-append">
-            <button id="hostSubmit" class="btn btn-success btn-logo" type="button">Search</button>
         </div>
-    </div>
+    </form>
     <div class="result">
         <h3 class="sub-header">Available Slots</h3>
         <div class="table-responsive">
@@ -23,7 +25,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for course in timetable %}
+                    {% for course in post %}
                         <tr>
                             <td>{{ course.course_name}}</td>
                             <td>{{ course.type}}</td>
@@ -37,7 +39,7 @@
                     {% endfor %}
                     </tbody>
                 </table>
-            <button type="submit">Request</button>
+            <button type="submit" name="requesting">Send Request</button>
         </form>
         </div>
     </div>

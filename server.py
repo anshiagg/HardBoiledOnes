@@ -14,6 +14,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
+
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     poster_id = db.Column(db.Integer)
@@ -26,12 +27,17 @@ class Search(db.Model):
     status = db.Column(db.Integer)
 
 class Timetable(db.Model):
+    __tablename__ = 'timetable'
+
     id = db.Column(db.Integer,primary_key=True)
     type = db.Column(db.String())
     day = db.Column(db.String())
     start_time = db.Column(db.Integer)
     duration = db.Column(db.Integer)
     course_name = db.Column(db.String())
+
+    def __repr__(self):
+        return "<Course name='%s', type='%s', day='%s', time='%s', duration='%s'>"(self.course_name, self.type, self.day, self.time, self.duration)
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
