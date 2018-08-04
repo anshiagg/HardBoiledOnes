@@ -25,6 +25,14 @@ def page_not_found(e=None):
 def index():
 	return render_template('front_page.html')
 
+@app.route('/request')
+def request():
+	return render_template('request.html')
+
+@app.route('/inbox')
+def inbox():
+	return render_template('foo.html')
+
 @app.route('/dashboard')
 def dashboard():
 	return render_template('dashboard.html')

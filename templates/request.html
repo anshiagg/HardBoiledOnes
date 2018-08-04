@@ -1,0 +1,29 @@
+ {% extends "base.html" %} {% block body %}
+
+<div class="request-body">
+    <h3>Request a Swap</h3>
+
+    <div class="input-group input-group-lg mb-3">
+        <input id="tags" type="text" placeholder="Search Course" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+        <div class="input-group-append">
+            <button id="hostSubmit" class="btn btn-success btn-logo" type="button">Search</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        var availableTags = [
+            "COMP1511 - Introduction to Programming",
+            "COMP1521 - Computer System Fundamentals",
+            "COMP1531 - Introduction to Software Engineering",
+            "COMP2111 - System Modelling & Design",
+            "COMP2511 - Object Oriented Programming",
+            "COMP3331 - Computer Networks & Applications ",
+            "COMP3421 - Computer Graphics",
+            "COMP9319 - Web Data Compression & Search"
+        ];
+        $("#tags").autocomplete({
+            source: availableTags
+        });
+    });
+</script> {% endblock %}
