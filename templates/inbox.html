@@ -5,6 +5,43 @@
     <title>Title</title>
 </head>
 <body>
+	<h1> Your requests </h1>
+
+   <div class="request-body">
+        <form method="POST">
+
+            <div class="result"> Your requests </h3>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Course name</th>
+                            <th>Type</th>
+                            <th>Day</th>
+                            <th> Time </th>
+                            <th> Duration </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for course in post %}
+                            <tr>
+                                <td>{{ course.course_name}}</td>
+                                <td>{{ course.type}}</td>
+                                <td>{{ course.day}}</td>
+                                <td>{{ course.start_time}}:00</td>
+                                <td>{{ course.duration}}hour</td>
+                                <td ><input type="checkbox"  id="id_{{course.id}}" name = "course_id" value={{course.id}}></td>
+                                {#                            gonna pass a list called requesting back#}
+                                <label for="id_{{course.id}}"> </label>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <button type="submit" name="requesting">Send Request</button>
+                </div>
+        </form>
+    </div>
+    </div>
 
 </body>
 </html>
