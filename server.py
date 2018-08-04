@@ -16,10 +16,13 @@ login_manager.login_view = 'login'
 
 
 class Post(db.Model):
+    __tablename__ = 'post'
+
     id = db.Column(db.Integer, primary_key=True)
     poster_id = db.Column(db.Integer)
     course_id = db.Column(db.Integer)
 
+# or request
 class Search(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     course_id = db.Column(db.Integer)
@@ -35,7 +38,6 @@ class Timetable(db.Model):
     start_time = db.Column(db.Integer)
     duration = db.Column(db.Integer)
     course_name = db.Column(db.String())
-
     def __repr__(self):
         return "<Course name='%s', type='%s', day='%s', time='%s', duration='%s'>"(self.course_name, self.type, self.day, self.time, self.duration)
 

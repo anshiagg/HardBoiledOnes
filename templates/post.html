@@ -3,16 +3,15 @@
     <div class="request-body">
         <form method="POST">
             <div class="input-group input-group-lg mb-3">
-                <input id="tags" type="text" placeholder="Search Course" name="searching" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                <input id="tags" type="text" placeholder="Search Course" name="searching_field" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
                 <div class="input-group-append">
-                    <button id="hostSubmit"  class="btn btn-success btn-logo" type="submit">Search</button>
+                    <button id="hostSubmit" class="btn btn-success btn-logo" type="submit">Search</button>
                 </div>
             </div>
-        </form>
-        <div class="result">
-            <h3 class="sub-header">Available Slots</h3>
-            <div class="table-responsive">
-                <form method="POST">
+
+            <div class="result">
+                <h3 class="sub-header">Available Slots</h3>
+                <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
                         <tr>
@@ -39,9 +38,10 @@
                         </tbody>
                     </table>
                     <button type="submit" name="requesting">Post</button>
-                </form>
+
+                </div>
             </div>
-        </div>
+        </form>
     </div>
     <script>
         $(function () {

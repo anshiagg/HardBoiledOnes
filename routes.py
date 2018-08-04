@@ -6,10 +6,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from server import *
 from flask_login import login_user, login_required, logout_user, current_user
 from System import System
-from Post import Post
+from Post import Posts
 from Requests import Request
 
-sys = System()
+# sys = System()
 
 class LoginForm(FlaskForm):
     username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
@@ -32,48 +32,62 @@ def dashboard():
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     # get the courses name form the post list
+    # course_list = []
+    # for temp in sys.post_list:
+    #     course_list.append(temp.getCourse)
+    posts = Post.query.all()
     course_list = []
-    for temp in sys.post_list:
-        course_list.append(temp.getCourse)
+    for p in posts:
+        course_list.append(Timetable.query.filter(Timetable.id == p.course_id).first())
 
     if request.method == "POST":
-        course_id_list = request.form.getlist("course_id")
-        for id in course_id_list:
-            print(current_user.id)
-            new_search = Search(course_id=int(id), requester_id=int(current_user.id),status=0)
-            db.session.add(new_search)
-            db.session.commit()
-        # course = Timetable.query.filter_by(course_name=)
-        return render_template('search.html', post=course_list)
+        if len(request.form["searching_field"]) != 0:
+            course_name = request.form["searching_field"]
+            course = Timetable.query.filter(Timetable.course_name == course_name[0:8])
+            return render_template('post.html', Courses=course)
+        else:
+            course_id_list = request.form.getlist("course_id")
+            for id in course_id_list:
+                # new request
+                new_search = Search(course_id=int(id), requester_id=int(current_user.id),status=0)
+                db.session.add(new_search)
+                db.session.commit()
+
+
+            return render_template('search.html', post=course_list)
     else:
         return render_template('search.html',post = course_list)
 
 @app.route('/post', methods=['GET', 'POST'])
 def post():
     course = Timetable.query.all()
-    # list = course
     if request.method == "POST":
-
-        if request.form["searching"]:
-            course_name = request.form["searching"]
+        if len(request.form["searching_field"]) != 0:
+            course_name = request.form["searching_field"]
             course = Timetable.query.filter(Timetable.course_name == course_name[0:8])
             return render_template('post.html', Courses=course)
-        course_id_list = request.form.getlist("course_id")
+        else:
+            course_id_list = request.form.getlist("course_id")
+            # use database to find posted courselist
+            for iterator in course_id_list:
+                c = Timetable.query.filter(Timetable.id == iterator).first()
+                # sys.addPost(Post(current_user, c))
 
-        # use database to find posted courselist
-        for iterator in course_id_list:
-            c = Timetable.query.filter(Timetable.id == iterator).first()
-            sys.addPost(Post(current_user,c))
-            db.session.delete(c)
-            db.session.commit()
+                # add to post table
+                db.session.add(Post(poster_id=current_user.id, course_id=c.id))
+                db.session.commit()
 
-
-        return redirect(url_for("dashboard"))
+        return render_template('post.html', Courses=course)
     else:
-        return render_template('post.html',Courses = course)
+        return render_template('post.html',Courses=course)
 
 @app.route('/inbox', methods=['GET', 'POST'])
 def inbox():
+    # check the searcch database
+    request_list = Search.query.all()
+    # find any request that belongs to current user
+
+
     return render_template('inbox.html')
 
 @app.route('/login', methods=['GET', 'POST'])
