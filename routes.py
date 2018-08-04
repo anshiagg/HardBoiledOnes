@@ -23,7 +23,11 @@ def page_not_found(e=None):
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+	return render_template('front_page.html')
+
+@app.route('/dashboard')
+def dashboard():
+	return render_template('dashboard.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

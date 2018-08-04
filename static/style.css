@@ -1,3 +1,11 @@
+.btn-logo {
+    background-color: #9247FF;
+}
+
+.btn-logo:hover {
+    background-color: #6A3AD1;
+}
+
 
 h2 {
     text-align: center;
