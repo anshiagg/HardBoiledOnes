@@ -1,16 +1,17 @@
 {% extends "base.html" %}{% block body %}
 {% import "bootstrap/wtf.html" as wtf %}
 
+
     <div class = "container">
-    <form method="POST">
-        <h2 class="form-signin-heading">Sign Up</h2>
-        {{ form.hidden_tag() }}
-        {{ wtf.form_field(form.username) }}
-        {{ wtf.form_field(form.email) }}
-        {{ wtf.form_field(form.password) }}
-        <small id="emailHelp" class="form-text text-muted">Please enter your UNSW zID, username or email address.</small>
-        <small id="emailHelp" class="form-text text-muted">Please enter your UNSW zPass or password(for guests).</small>
-        <button type="submit" class="btn btn-warning no-radius">Login</button>
-    </form>
+        <form method="POST">
+            <h2 class="form-signin-heading">Sign Up</h2>
+            {{ form.hidden_tag() }}
+            {{ wtf.form_field(form.username) }}
+            {{ wtf.form_field(form.email) }}
+            {{ wtf.form_field(form.password) }}
+            <small id="emailHelp" class="form-text text-muted">Please enter your UNSW zID, username or email address.</small>
+            <small id="emailHelp" class="form-text text-muted">Please enter your UNSW zPass or password(for guests).</small>
+            <button type="submit" class="btn btn-warning no-radius">Sign Up</button>
+        </form>
     </div>
 {% endblock %}

@@ -1,0 +1,61 @@
+ {% extends "login-base.html" %} {% block content %}
+
+<div class="request-body">
+
+    <div class="input-group input-group-lg mb-3">
+        <input id="tags" type="text" placeholder="Search Course" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+        <div class="input-group-append">
+            <button id="hostSubmit" class="btn btn-success btn-logo" type="button">Search</button>
+        </div>
+    </div>
+    <div class="result">
+        <h3 class="sub-header">Available Slots</h3>
+        <div class="table-responsive">
+            <form method="POST">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>course name</th>
+                        <th>type</th>
+                        <th>day</th>
+                        <th>time</th>
+                        <th>duration</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for course in timetable %}
+                        <tr>
+                            <td>{{ course.course_name}}</td>
+                            <td>{{ course.type}}</td>
+                            <td>{{ course.day}}</td>
+                            <td>{{ course.start_time}}:00</td>
+                            <td>{{ course.duration}}hour</td>
+                            <td ><input type="checkbox"  id="id_{{course.id}}" name = "course_id" value={{course.id}}></td>
+{#                            gonna pass a list called requesting back#}
+                            <label for="id_{{course.id}}"> </label>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            <button type="submit">Request</button>
+        </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        var availableTags = [
+            "COMP1511 - Introduction to Programming",
+            "COMP1521 - Computer System Fundamentals",
+            "COMP1531 - Introduction to Software Engineering",
+            "COMP2111 - System Modelling & Design",
+            "COMP2511 - Object Oriented Programming",
+            "COMP3331 - Computer Networks & Applications ",
+            "COMP3421 - Computer Graphics",
+            "COMP9319 - Web Data Compression & Search"
+        ];
+        $("#tags").autocomplete({
+            source: availableTags
+        });
+    });
+</script> {% endblock %}

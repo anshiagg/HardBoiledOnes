@@ -9,6 +9,12 @@
             {{ wtf.form_field(form.password) }}
             {{ wtf.form_field(form.remember) }}
             <button type="submit" class="btn btn-warning no-radius">Login</button>
+            {% if login_failed %}
+                <p style="margin: 30px 70px; color: red">ERROR: Invalid username or password entered. Please try again.</p>
+            {% endif %}
+            {% if registered == False%}
+                <p style="margin: 30px 70px; color: red">ERROR: PLease register.</p>
+            {% endif %}
         </form>
         <a href="/signup">Register</a>
     </div>

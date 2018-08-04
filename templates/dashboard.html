@@ -2,11 +2,8 @@
 
 <div class="login-container">
     <img src="{{url_for('static', filename='logo.png') }}" />
-    <a href="{{url_for('request')}}" class="btn btn-primary btn-lg btn-block btn-logo">Post</a>
-    <a href="{{url_for('request')}}" class="btn btn-primary btn-lg btn-block btn-logo">Request</a>
-
+    <a href="{{url_for('post')}}" class="btn btn-primary btn-lg btn-block btn-logo">Post</a>
+    <a href="{{url_for('search')}}" class="btn btn-primary btn-lg btn-block btn-logo">Search</a>
     <a href="{{url_for('inbox')}}" class="btn btn-primary btn-lg btn-block btn-logo">Inbox</a>
-
-
 </div>
 {% endblock %}
