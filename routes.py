@@ -25,13 +25,17 @@ def page_not_found(e=None):
 def index():
 	return render_template('front_page.html')
 
-@app.route('/request')
+@app.route('/request', methods = ['GET', 'POST'])
 def request():
-	return render_template('request.html')
+    return render_template('request.html')
+
+@app.route('/post')
+def post():
+    return render_template('post.html')
 
 @app.route('/inbox')
 def inbox():
-	return render_template('foo.html')
+	return render_template('inbox.html')
 
 @app.route('/dashboard')
 def dashboard():
