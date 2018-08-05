@@ -83,12 +83,28 @@ def post():
 
 @app.route('/inbox', methods=['GET', 'POST'])
 def inbox():
-    # check the searcch database
+    # check the search database
     request_list = Search.query.all()
     # find any request that belongs to current user
+    message_list = []
+    requester = ''
+    for iterator in request_list:
+        # the post
+        for posts in Post.query.filter(Post.course_id == iterator.course_id):
+            # if this requeseted course is posted by this user
+            if current_user.id == posts.poster_id:
+                message_list.append(Timetable.query.filter(Timetable.id == iterator.course_id).first())
+                requester = User.query.filter(User.username==iterator.requester_id).first()
 
+    if request.method == "POST":
+        message_list = []
+        swap = True;
+        for p in request.form.getlist("course_id"):
+            message_list.append(Timetable.query.filter(Timetable.id == p).first())
 
-    return render_template('inbox.html')
+        return render_template('inbox.html', Course=message_list,swap = True,requester = requester)
+    else:
+        return render_template('inbox.html',course=message_list)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -122,7 +138,7 @@ def signup():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('front_page'))
+    return redirect(url_for('index'))
 
 @app.route("/404")
 @app.errorhandler(404)

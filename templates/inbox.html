@@ -1,29 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-	<h1> Your requests </h1>
+{% extends "login-base.html" %} {% block content %}
 
-   <div class="request-body">
+    <div class="request-body">
         <form method="POST">
 
-            <div class="result"> Your requests </h3>
+
+            <div class="result">
+                <h3 class="sub-header">Your requests</h3>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Course name</th>
-                            <th>Type</th>
-                            <th>Day</th>
-                            <th> Time </th>
-                            <th> Duration </th>
+                            <th>course name</th>
+                            <th>type</th>
+                            <th>day</th>
+                            <th>time</th>
+                            <th>duration</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for course in post %}
+                        {% for course in course %}
                             <tr>
                                 <td>{{ course.course_name}}</td>
                                 <td>{{ course.type}}</td>
@@ -37,11 +32,14 @@
                         {% endfor %}
                         </tbody>
                     </table>
-                    <button type="submit" name="requesting">Send Request</button>
+                    <button type="submit" name="requesting">Comfirm swap</button>
+                    {% if swap %}
+                        {% for courses in Course %}
+                            <p style="margin: 30px 70px; color: limegreen">You have successfully changed {{ courses.course_name}} from {{ courses.start_time}}:00</p>
+                        {% endfor %}
+                    {% endif %}
                 </div>
         </form>
     </div>
     </div>
-
-</body>
-</html>
+{% endblock %}
