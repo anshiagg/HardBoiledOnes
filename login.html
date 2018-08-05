@@ -1,0 +1,21 @@
+{% extends "login-base.html" %}{% block body %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+    <div class = "container">
+        <form class="form-signin" method="POST" action="/login">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            {{ form.hidden_tag() }}
+            {{ wtf.form_field(form.username) }}
+            {{ wtf.form_field(form.password) }}
+            {{ wtf.form_field(form.remember) }}
+            <button type="submit" class="btn btn-warning no-radius" style="background-color: mediumpurple">Login</button>
+            {% if login_failed %}
+                <p style="margin: 30px 70px; color: red">ERROR: Invalid username or password entered. Please try again.</p>
+            {% endif %}
+            {% if registered == False%}
+                <p style="margin: 30px 70px; color: red">ERROR: PLease register.</p>
+            {% endif %}
+        </form>
+        <a href="/signup" >Register</a>
+    </div>
+{% endblock %}

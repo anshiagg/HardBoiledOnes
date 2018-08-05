@@ -1,0 +1,15 @@
+{% extends "login-base.html" %}{% block body %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+    <div class = "container">
+        <form method="POST">
+            <h2 class="form-signin-heading">Sign Up</h2>
+            {{ form.hidden_tag() }}
+            {{ wtf.form_field(form.username) }}
+            {{ wtf.form_field(form.email) }}
+            {{ wtf.form_field(form.password) }}
+            <button type="submit" class="btn btn-warning no-radius" style="background-color: mediumpurple">Sign Up</button>
+        </form>
+    </div>
+{% endblock %}

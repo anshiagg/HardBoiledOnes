@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="login-container">
+        <img src="{{url_for('static', filename='logo.png') }}" style="margin-left: auto; margin-right: auto;width: 100%;"/>
+        <a href="{{url_for('signup')}}" class="btn btn-primary btn-lg btn-block btn-logo" style="background-color: mediumpurple">Register an account</a>
+
+        <a href="{{url_for('login')}}" class="btn btn-primary btn-lg btn-block btn-logo" style="background-color: mediumpurple">Login into account</a>
+
+{#        <a href="{{url_for('dashboard')}}" class="btn btn-primary btn-lg btn-block btn-logo" style="background-color: mediumpurple">Continue as a guest</a>#}
+</div>
+{% endblock %}
