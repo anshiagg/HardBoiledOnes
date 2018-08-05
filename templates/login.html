@@ -1,19 +1,21 @@
-{% extends "base.html" %}{% block body %}
-    <div class = "container">
-    <form method="POST">
-        <div class="form-group">
-            <label for="zid">Username (zID or email)</label>
-            <input name="username" type="username" class="form-control no-radius" id="zid" aria-describedby="zidHelp" placeholder="Username">
-            <small id="emailHelp" class="form-text text-muted">Please enter your UNSW zID, username or email address.</small>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input name="password" type="password" class="form-control no-radius" id="exampleInputPassword1" placeholder="Password">
-            <small id="emailHelp" class="form-text text-muted">Please enter your UNSW zPass or password(for guests).</small>
-        </div>
+{% extends "login-base.html" %}{% block body %}
+{% import "bootstrap/wtf.html" as wtf %}
 
-        <button type="submit" class="btn btn-warning no-radius">Login</button>
-    </form>
-        <a href="#">Register</a>
+    <div class = "container">
+        <form class="form-signin" method="POST" action="/login">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            {{ form.hidden_tag() }}
+            {{ wtf.form_field(form.username) }}
+            {{ wtf.form_field(form.password) }}
+            {{ wtf.form_field(form.remember) }}
+            <button type="submit" class="btn btn-warning no-radius" style="background-color: mediumpurple">Login</button>
+            {% if login_failed %}
+                <p style="margin: 30px 70px; color: red">ERROR: Invalid username or password entered. Please try again.</p>
+            {% endif %}
+            {% if registered == False%}
+                <p style="margin: 30px 70px; color: red">ERROR: PLease register.</p>
+            {% endif %}
+        </form>
+        <a href="/signup" >Register</a>
     </div>
 {% endblock %}
